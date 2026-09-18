@@ -148,8 +148,13 @@ Windows:
 Linux/macOS:
 
 ```bash
-./run_all.sh
+bash run_all.sh
 ```
+
+Use the explicit shell commands above even if the archived scripts print
+`./setup.sh` or `./run_all.sh` as a hint: browser uploads and ZIP extraction may
+not preserve executable permissions. No `chmod` step is needed when invoking
+`sh setup.sh` and `bash run_all.sh`.
 
 The runner verifies the external inputs, performs eleven automated steps, and
 then compares every reported output with the release-time verification
@@ -162,7 +167,7 @@ companion JSON/CSV results.
 
 For a deliberate analysis-code revision that changes the result schema,
 maintainers may run `.\run_all.ps1 -SkipResultVerification` on Windows or
-`./run_all.sh --skip-result-verification` on Linux/macOS. This option is only
+`bash run_all.sh --skip-result-verification` on Linux/macOS. This option is only
 for producing candidate outputs from revised code. Refresh and independently
 check `EXPECTED_RESULTS.json` before publishing; ordinary users should not use
 the skip option.
